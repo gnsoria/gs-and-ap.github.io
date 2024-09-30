@@ -45,7 +45,6 @@ body {
     text-align: left;
 
     background: var(--purple);
-    background: linear-gradient(33deg, var(--white) 0%, hsla(273, 33%, 62%, 1) 41%, var(--purple) 100%);
 }
 
 
@@ -71,14 +70,66 @@ p {
 }
 
 
-.main-section {
-    height: 100vh;
+section {
+    --gradient-light-top-right: 213deg;
+    --gradient-light-bottom-right: 327deg;
+
+    min-height: 200vh;
     width: 100%;
     margin: auto;
     padding: 1rem;
+
+    background:
+        linear-gradient(var(--_gradient-position),
+            var(--white) 0%,
+            hsla(273, 33%, 62%, 1) 41%,
+            var(--purple) 100%);
+}
+
+section:nth-of-type(odd) {
+    --_gradient-position: var(--gradient-light-top-right);
+}
+
+section:nth-of-type(even) {
+    --_gradient-position: var(--gradient-light-bottom-right);
+}
+
+.main-section {
+    min-height: 100vh;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.card {
+    height: 500px;
+    aspect-ratio: 2.5 / 3.5;
+    border-radius: 2rem;
+    position: relative;
+
+    padding: 4rem;
+}
+
+.card>* {
+    z-index: 1;
+    position: relative;
+}
+
+.card::before,
+.card::after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+}
+
+.card::before {
+    inset: 0;
+    background-color: var(--black);
+}
+
+.card:after {
+    inset: 3rem;
+    background-color: hsl(from var(--purple) h s calc(l * 0.8));
 }
