@@ -6,6 +6,8 @@
     --coral: #F7717D;
     --primary: var(--purple);
     --accent: var(--coral);
+
+    --card-border-radius: 1.5rem;
 }
 
 
@@ -62,11 +64,13 @@ h5,
 h6 {
     margin-top: 0;
     margin-bottom: 0.5rem;
+    text-wrap: balance;
 }
 
 p {
     margin-top: 0;
     margin-bottom: 1rem;
+    text-wrap: pretty;
 }
 
 
@@ -94,19 +98,65 @@ section:nth-of-type(even) {
     --_gradient-position: var(--gradient-light-bottom-right);
 }
 
-.main-section {
+.hero-section {
     min-height: 100vh;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    gap: 3rem;
+    padding-top: 5rem;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+.hero-card-deck {
+    position: relative;
+    width: 100vw;
+    height: 100%;
+}
+
+.hero-card-deck img {
+    --img-width: clamp(135px, 300px, 30vw);
+    --img-rotation: 10deg;
+    --_spread-distance: calc(50% - var(--img-width) - clamp(2rem, 8%, 5rem));
+
+    width: var(--img-width);
+    box-shadow: 0 0 2rem 0.5rem var(--black);
+    border-radius: var(--card-border-radius);
+
+    position: absolute;
+}
+
+.hero-card-deck img:first-of-type {
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.hero-card-deck img:not(:first-of-type) {
+    top: 2rem;
+}
+
+.hero-card-deck img:not(:first-of-type):nth-of-type(odd) {
+    transform: rotate(var(--img-rotation));
+    right: var(--_spread-distance);
+}
+
+.hero-card-deck img:not(:first-of-type):nth-of-type(even) {
+    transform: rotate(calc(var(--img-rotation) * -1));
+    left: var(--_spread-distance);
 }
 
 .card {
     height: 500px;
     aspect-ratio: 2.5 / 3.5;
-    border-radius: 2rem;
+    border-radius: var(--card-border-radius);
     position: relative;
 
     padding: 4rem;
