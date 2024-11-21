@@ -101,6 +101,8 @@ section:nth-of-type(even) {
 .hero-section {
     min-height: 100vh;
 
+    position: relative;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -111,6 +113,11 @@ section:nth-of-type(even) {
     text-align: center;
 
     overflow: hidden;
+}
+
+.hero-section footer {
+    position: sticky;
+    top: 80%;
 }
 
 .hero-card-deck {
@@ -153,8 +160,14 @@ section:nth-of-type(even) {
     left: var(--_spread-distance);
 }
 
+.card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
 .card {
-    height: 500px;
+    width: clamp(250px, 350px, 100%);
     aspect-ratio: 2.5 / 3.5;
     border-radius: var(--card-border-radius);
     position: relative;
