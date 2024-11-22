@@ -99,7 +99,7 @@ section:nth-of-type(even) {
 }
 
 .hero-section {
-    min-height: 100vh;
+    min-height: clamp(700px, 100vh, 100vh);;
 
     position: relative;
 
@@ -117,7 +117,7 @@ section:nth-of-type(even) {
 
 .hero-section footer {
     position: sticky;
-    top: 80%;
+    top: clamp(650px, 80%, 80%);
 }
 
 .hero-card-deck {
